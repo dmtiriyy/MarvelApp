@@ -16,6 +16,16 @@ class App extends Component  {
             selectedChar: id
         })
     }
+    class WhoAmI extends Component  {
+        constructor(props){
+          super(props);
+          this.state = {
+            years: 27,
+            text: '+++',
+            position:'' 
+          }
+          
+        }
     render() {
         return (
             <div className="app">
