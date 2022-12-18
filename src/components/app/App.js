@@ -25,6 +25,18 @@ class App extends Component  {
             position:'' 
           }
           
+  nextYear = () =>{
+    this.setState(state =>({
+      years: state.years + 1
+    }))
+  }
+
+  commitInputChanges = (e, color) =>{
+    console.log(color);
+    this.setState({
+      position: e.target.value
+    })
+  }
         }
     render() {
         return (
