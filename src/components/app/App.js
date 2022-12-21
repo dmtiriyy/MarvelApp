@@ -37,6 +37,24 @@ class App extends Component  {
       position: e.target.value
     })
   }
+  
+  const Wrapper = styled.div`
+    width: 600px;
+    margin: 80px auto 0 auto
+  `;
+
+const DynamicGreeting = (props) => {
+  return (
+    <div className={'mb-3 p-3 border border-' + props.color}>
+      {
+        React.Children.map(props.children, child =>{
+          return React.cloneElement(child, {className: 'shadow p-3 m-3 border rounded'})
+        })
+      }
+    </div> 
+    
+  )
+}
         }
     render() {
         return (
