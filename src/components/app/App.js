@@ -54,6 +54,15 @@ const DynamicGreeting = (props) => {
     </div> 
     
   )
+  class Counter extends Component {
+    state = {
+      counter: 0
+    }
+    changeCounter = () => {
+      this.setState(({counter}) => ({
+        counter: counter +1
+      }))
+    }
 }
         }
     render() {
