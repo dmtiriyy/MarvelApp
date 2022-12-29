@@ -7,6 +7,23 @@ import ErrorBoundary from "../errorBoundary/ErrorBoundary";
 
 import decoration from '../../resources/img/vision.png';
 
+function useInputWithValidate(initialValue) {
+    const [value, setValue] = useState(initialValue);
+
+    const onChange = event =>{
+      setValue(event.target.value);
+    }
+    const validateInput = () => {
+      return  value.search(/\d/) >= 0 
+    }
+    return {value, onChange, validateInput}
+  }
+const Form = () =>  {
+  
+  const input = useInputWithValidate('')
+  const textArea = useInputWithValidate('')
+
+  const color = input.validateInput() ? 'text-danger' : null;
 const App = () => {
     const[selectedChar, setChar] = useState(null)
   
