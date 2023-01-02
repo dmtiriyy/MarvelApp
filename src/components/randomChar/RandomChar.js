@@ -26,7 +26,7 @@ const RandomChar = () =>  {
     }, [])
     
     const onCharLoaded = (char) => {
-        setLoading(loading);
+        setLoading(false);
         setChar(char);
     }
 
@@ -39,27 +39,27 @@ const RandomChar = () =>  {
         setLoading(false);
     }
 
-   const updateChar = () =>{
-        const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
+    const updateChar = () => {
+        const id = Math.floor(Math.random() * (1011400 - 1011000)) + 1011000;
         onCharLoading();
         marvelService
-        .getCharacter(id)
-        .then(onCharLoaded)
-        .catch(onError)
+            .getCharacter(id)
+            .then(onCharLoaded)
+            .catch(onError);
     }
 
     
         
-        const errorMessage = error ? <ErrorMessage/> : null;
-        const spinner = loading ? <Spinner/> : null;
-        const content = !(loading || error) ? <View char={char}/> : null;
+    const errorMessage = error ? <ErrorMessage/> : null;
+    const spinner = loading ? <Spinner/> : null;
+    const content = !(loading || error || !char) ? <View char={char} /> : null;
 
         
         return (
             <div className="randomchar">
-               {errorMessage}
-               {spinner}
-               {content}
+                {errorMessage}
+                {spinner}
+                {content}
                 <div className="randomchar__static">
                     <p className="randomchar__title">
                         Random character for today!<br/>
@@ -76,33 +76,34 @@ const RandomChar = () =>  {
             </div>
         )
     }
+    
 
-
-const View = ({char}) => {
-    const {name, description, thumbnail, homepage,wiki} = char;
-    let imgStyle = {'objectFit' : 'cover'};
-    if (thumbnail === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg"){
-        imgStyle = {'objectFit': 'contain'}
-    }
-    return (
-    <div className="randomchar__block">
-                    <img src={thumbnail} alt="Random character" className="randomchar__img" style = {imgStyle}/>
-                    <div className="randomchar__info">
-                        <p className="randomchar__name">{name}</p>
-                        <p className="randomchar__descr">
-                          {description}
-                        </p>
-                        <div className="randomchar__btns">
-                            <a href={homepage} className="button button__main">
-                                <div className="inner">homepage</div>
-                            </a>
-                            <a href={wiki} className="button button__secondary">
-                                <div className="inner">Wiki</div>
-                            </a>
-                        </div>
+    const View = ({char}) => {
+        const {name, description, thumbnail, homepage, wiki} = char;
+        let imgStyle = {'objectFit' : 'cover'};
+        if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
+            imgStyle = {'objectFit' : 'contain'};
+        }
+    
+        return (
+            <div className="randomchar__block">
+                <img src={thumbnail} alt="Random character" className="randomchar__img" style={imgStyle}/>
+                <div className="randomchar__info">
+                    <p className="randomchar__name">{name}</p>
+                    <p className="randomchar__descr">
+                        {description}
+                    </p>
+                    <div className="randomchar__btns">
+                        <a href={homepage} className="button button__main">
+                            <div className="inner">homepage</div>
+                        </a>
+                        <a href={wiki} className="button button__secondary">
+                            <div className="inner">Wiki</div>
+                        </a>
                     </div>
                 </div>
-    )
-}
+            </div>
+        )
+    }
 
 export default RandomChar;
