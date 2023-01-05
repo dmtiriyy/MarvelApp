@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react/cjs/react.production.min';
+import { useState, useEffect } from 'react/cjs/react.production.min';
 import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/errorMessage';
 
 import './comicsList.scss';
+
 
 const ComicsList = () => {
 
@@ -75,5 +76,4 @@ const ComicsList = () => {
         </div>
     )
 }
-
 export default ComicsList;
