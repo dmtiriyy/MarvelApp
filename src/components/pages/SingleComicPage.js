@@ -1,11 +1,15 @@
 import { useParams, Link} from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Spinner from '../spinner/Spinner';
+import Skeleton from '../skeleton/Skeleton';
+import ErrorMessage from '../errorMessage/errorMessage';
 
-import './singleComic.scss';
+import './singleComicPage.scss';
 import xMen from '../../resources/img/x-men.png';
 
-const SingleComic = () => {
-    const smth = useParams();
-    console.log(smth)
+const SingleComicPage = () => {
+    const {comicId} = useParams();
+    
     return (
         <div className="single-comic">
             <img src={xMen} alt="x-men" className="single-comic__img"/>
@@ -21,4 +25,4 @@ const SingleComic = () => {
     )
 }
 
-export default SingleComic;
+export default SingleComicPage;
