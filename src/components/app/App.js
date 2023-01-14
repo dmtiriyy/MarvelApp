@@ -1,4 +1,4 @@
-
+import { lazy } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { MainPage, ComicsPage, Page404, SingleComicPage } from "../pages";
 import AppHeader from "../appHeader/AppHeader";
