@@ -3,17 +3,20 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { MainPage, ComicsPage, Page404, SingleComicPage } from "../pages";
 import AppHeader from "../appHeader/AppHeader";
 
-const InputComponent = () => {
-
-    const context = useContext(dataContext);
-
-    return(
-    <input value={context.mail}
-     type="email"
-      className='form-control'
-       placeholder="name@example.com" />
-    )
-}
+class InputComponent extends Component {
+    render() {
+        return(
+           <Consumer>
+            {
+                    value => {
+                        return ( <input value={this.props.mail} type="email" className='form-control' placeholder="name@example.com"/>)
+                    }
+                }
+          </Consumer> 
+          <input value={this.context.mail} type="email" className='form-control' placeholder="name@example.com" />
+        )
+    }
+} 
 
 const App = () => {
 
