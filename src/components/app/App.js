@@ -42,20 +42,11 @@ const App = () => {
     )
 }
 
-return (
-    <Provider value ={data}>
-        <Form mail={data.mail} text={data.text}/>
-        <button 
-            onClick={() => setData({
-                mail:{
-
-                name: "second@example.com"},
-                text: 'another text'
-            })}>
-            Click me
-        </button>
-    </Provider>
-);
+shouldComponentUpdate(nextProps){
+    if(this.props.mail.name === nextProps.mail.name){
+        return false
+    }
+}
 const Slider = () => {
     const [slide, setSlide] = useState(0);
    /*  const [autoplay, setAutoplay] = useState(false); */
