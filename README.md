@@ -1,1 +1,1 @@
-Project made on ReactJs, using API server, hosted on Heroku, used class components
+Project made on ReactJs, using API server, used functional components, hooks, LifeCycle, ReactRouter 
