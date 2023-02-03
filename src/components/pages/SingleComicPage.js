@@ -2,6 +2,7 @@ import { useParams, Link} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Spinner from '../spinner/Spinner';
 import Skeleton from '../skeleton/Skeleton';
+import { Helmet } from 'react-helmet';
 import AppBanner from '../appBanner/AppBanner';
 import ErrorMessage from '../errorMessage/errorMessage';
 import useMarvelService from '../../services/MarvelService';
@@ -35,6 +36,14 @@ const SingleComicPage = () => {
 
     return (
         <>
+        <Helmet>
+        <meta name ="description"
+        content="Page with single comic"
+        />
+        <title>
+            Single Comic Page
+        </title>
+        </Helmet>
             <AppBanner/>
             {errorMessage}
             {spinner}
