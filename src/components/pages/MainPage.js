@@ -11,13 +11,14 @@ import decoration from '../../resources/img/vision.png';
 const MainPage = () => {
 
     const [selectedChar, setChar] = useState(null);
-
+    const {loading, error, getComic, getCharacter, clearError, process, setProcess} = useMarvelService();
     const onCharSelected = (id) => {
         setChar(id);
     }
 
     return (
         <>
+         {setContent(process, Component, data)}
             <Helmet>
     <meta
         name="description"
