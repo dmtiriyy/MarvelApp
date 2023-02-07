@@ -1,6 +1,6 @@
 import {lazy, Suspense} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-
+import {createStore} from 'redux';
 import AppHeader from "../appHeader/AppHeader";
 import Spinner from '../spinner/Spinner';
 
@@ -9,6 +9,30 @@ const MainPage = lazy(() => import('../pages/MainPage'));
 const ComicsPage = lazy(() => import('../pages/ComicsPage'));
 const SinglePage = lazy(() => import('../pages/SinglePage'));
 
+const reducer =(state = initialState, action) => {
+    switch(action.type) {
+      case 'INC':
+        return {
+          ...state,
+          value: state.value + 1
+        };
+      case 'DEC':
+        return {
+          ...state,
+          value: state.value - 1
+        };
+      case 'RND':
+        return {
+          ...state,
+          value: state.value * action.payload
+        };
+      default:
+        return state;
+    }
+
+}
+
+const store = createStore(reducer);
 const App = () => {
     return (
         <Router>
