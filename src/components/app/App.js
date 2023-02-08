@@ -9,6 +9,12 @@ const MainPage = lazy(() => import('../pages/MainPage'));
 const ComicsPage = lazy(() => import('../pages/ComicsPage'));
 const SinglePage = lazy(() => import('../pages/SinglePage'));
 
+
+const inc = () => ( {type: 'INC'});
+const dec = () => ( {type: 'DEC'});
+const rnd = (value) => ( {type: 'RND', payload: value});
+const initialState = {value: 0};
+
 const reducer =(state = initialState, action) => {
     switch(action.type) {
       case 'INC':
@@ -31,6 +37,8 @@ const reducer =(state = initialState, action) => {
     }
 
 }
+
+
 
 const store = createStore(reducer);
 const App = () => {
