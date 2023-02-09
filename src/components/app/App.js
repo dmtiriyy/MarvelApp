@@ -39,6 +39,14 @@ const reducer =(state = initialState, action) => {
 }
 
 
+ const bindActionCreator = (creator, dispatch) => (...args) => {
+  dispatch(creator(...args));
+}
+ 
+
+ const decDispatch = bindActionCreators(dec, dispatch)
+const rndDispatch = bindActionCreators(rnd, dispatch) 
+
 
 const store = createStore(reducer);
 const App = () => {
