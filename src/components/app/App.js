@@ -49,6 +49,17 @@ const rndDispatch = bindActionCreators(rnd, dispatch)
 
 
 const store = createStore(reducer);
+const mapStateToProps = (state) => {
+    return {
+        counter: state.value
+    }
+}
+
+/* const mapDispatchToProps = (dispatch) => {
+    return  bindActionCreators(actions, dispatch)
+  
+} */
+export default connect(mapStateToProps, actions)(Counter);
 const App = () => {
     return (
         <Router>
