@@ -47,19 +47,20 @@ const reducer =(state = initialState, action) => {
  const decDispatch = bindActionCreators(dec, dispatch)
 const rndDispatch = bindActionCreators(rnd, dispatch) 
 
+const Counter = () => {
 
-const store = createStore(reducer);
-const mapStateToProps = (state) => {
-    return {
-        counter: state.value
-    }
+  const counter = useSelector(state => state.counter)
+  const dispatch = useDispatch();
+  return(
+      <div  className="jumbotron">
+          <h1>{counter}</h1>
+          <button onClick={() => dispatch(dec())} className="btn btn-primary">DEC</button>
+          <button onClick={() => dispatch(inc())} className="btn btn-primary">INC</button>
+          <button onClick={() => dispatch(rnd())} className="btn btn-primary">RND</button>
+      </div>
+  )
 }
 
-/* const mapDispatchToProps = (dispatch) => {
-    return  bindActionCreators(actions, dispatch)
-  
-} */
-export default connect(mapStateToProps, actions)(Counter);
 const App = () => {
     return (
         <Router>
