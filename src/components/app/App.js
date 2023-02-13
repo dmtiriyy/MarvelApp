@@ -60,6 +60,15 @@ const Counter = () => {
       </div>
   )
 }
+document.getElementById('inc').addEventListener('click', inc)
+
+document.getElementById('dec').addEventListener('click', dec)
+
+
+document.getElementById('rnd').addEventListener('click', () => {
+  const value = Math.floor(Math.random() * 10)
+  rnd(value);
+})
 
 const App = () => {
     return (
